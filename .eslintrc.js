@@ -8,7 +8,6 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:import/recommended',
     'plugin:import/typescript',
-    'plugin:jsx-a11y/recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'prettier',
@@ -23,5 +22,8 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint'],
   ignorePatterns: ['.eslintrc.*', '*.config.*'],
-  rules: {},
+  rules: {
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    'react/react-in-jsx-scope': 'off',
+  },
 };
