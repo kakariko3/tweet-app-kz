@@ -19,7 +19,7 @@ export const Feed = () => {
   ]);
 
   useEffect(() => {
-    // リアルタイムでツイートを取得 (onSnapshot)
+    // Firestoreからリアルタイムでツイートを取得 (onSnapshot)
     const postsCollectionRef = collection(db, 'posts');
     const q = query(postsCollectionRef, orderBy('timestamp', 'desc'));
     const unsub = onSnapshot(q, (snapshot) => {
