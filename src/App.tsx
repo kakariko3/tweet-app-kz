@@ -13,7 +13,7 @@ export const App = () => {
 
   useEffect(() => {
     // ユーザーの変更を監視
-    const unSub = auth.onAuthStateChanged((user) => {
+    const unsub = auth.onAuthStateChanged((user) => {
       if (user) {
         console.log(user);
         // ユーザーが存在する場合
@@ -29,9 +29,8 @@ export const App = () => {
         dispatch(logout());
       }
     });
-
-    // クリーンアップ
-    return () => unSub();
+    // クリーンアップ関数 (コンポーネントのアンマウント時に実行)
+    return () => unsub();
   }, [dispatch]);
 
   return (
