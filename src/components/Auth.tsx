@@ -100,11 +100,11 @@ export const Auth = () => {
           .join('');
         const fileName = randomChar + '_' + avatarImage.name;
 
-        // アバター画像のアップロード
+        // CloudStorageにアバター画像をアップロード
         const storageRef = ref(storage, `avatars/${fileName}`);
         uploadBytes(storageRef, avatarImage).then((snapshot) => {
           console.log('ファイルをアップロードしました');
-          // アバター画像のURLを取得
+          // 画像のURLを取得
           getDownloadURL(snapshot.ref).then((url) => {
             // Firebaseのユーザープロフィールを更新
             updateProfile(userCredential.user, {
@@ -134,9 +134,10 @@ export const Auth = () => {
     await signInWithPopup(auth, provider).catch((err) => alert(err.message));
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
+  // Submitが実行されたときの処理
+  const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+    const data = new FormData(evt.currentTarget);
     console.log({
       email: data.get('email'),
       password: data.get('password'),
