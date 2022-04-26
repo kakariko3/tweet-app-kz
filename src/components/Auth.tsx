@@ -34,9 +34,10 @@ import styles from './Auth.module.css';
 import { auth, provider, storage } from '../firebase';
 import { updateUserProfile } from '../features/userSlice';
 
+// テーマの作成
 const theme = createTheme();
 
-// モーダルのスタイルを作成 (Emotion)
+// モーダルのスタイルを作成 (Emotion Styled)
 const SModal = styled('div')({
   outline: 'none',
   position: 'absolute',
